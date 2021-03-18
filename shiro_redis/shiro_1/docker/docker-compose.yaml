@@ -1,0 +1,17 @@
+version: "3"
+services:
+  shiro_1:
+    build:
+      context: "."
+      dockerfile: "shiro_1"
+    container_name: "shiro_1"
+    ports:
+      - "80:80"
+
+  shiro_2:
+    build:
+      context: "."
+      dockerfile: "shiro_2"
+    container_name: "shiro_2"
+    ports:
+      - "81:81"

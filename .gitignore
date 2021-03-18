@@ -1,0 +1,8 @@
+# 文件夹
+/.idea/
+/**/target/
+/**/.gradle/
+/**/build/
+
+# 文件
+*.iml

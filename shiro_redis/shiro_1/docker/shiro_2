@@ -1,0 +1,16 @@
+# Docker Compose
+# ①使用docker-compose命令启动Redis容器（连接docker_default网络并开放external）
+# ②Maven打包：mvn package
+# ③将Dockerfile（shiro_1和shiro_2）和docker-compose.yaml放到打包后jar包（shiro_1.jar和shiro_2.jar）的目录下
+# ④启动：docker-compose up
+
+# 基础镜像
+FROM openjdk:8-jdk-alpine
+# 挂载点
+VOLUME /tmp
+# 拷贝文件并重命名
+ADD shiro_2-1.0.jar app.jar
+# 启动容器时执行（缩短Tomcat启动时间+使用生产环境配置）
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","-Dspring.profiles.active=pro","/app.jar"]
+# 端口
+EXPOSE 81
